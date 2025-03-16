@@ -1,0 +1,59 @@
+Trabajando con una figura geométrica
+
+1.Crea una clase llamada Rectangulo
+
+2.Define 2 atributos para la clase: ancho y alto. Pueden ser
+números decimales o enteros.
+
+3.Define un atributo de tipo entero, 'contadorRectangulos',
+que sea estático y que lleve un registro del número total de
+ instancias de 'Rectangulo' creadas.
+
+4.Diseña un constructor con argumentos que inicialice los valores del
+'ancho' y 'alto', y que incremente en uno el valor de
+ 'contadorRectangulos'.
+
+5.Implementa un método llamado 'area()' y otro método llamado
+'perimetro()', responsables de calcular el área y el perímetro
+del rectángulo, respectivamente.
+
+6.Implementa un método llamado imprimirArea para mostrar el
+ resultado por consola;
+
+7.Implementa un método llamado imprimirPerimetro para mostrar
+ el resultado por consola;
+
+8.Implementa un método estático que permita obtener el número
+ total de rectángulos creados hasta el momento.
+
+9.Desarrolla un menú interactivo que permita al usuario crear
+ instancias de 'Rectangulo' y acceder a sus métodos para obtener
+  información relevante.
+
+📌 Sugerencia: Utiliza un arreglo de rectángulos para guardar las
+ instancias de la clase “Rectángulo” creadas.
+
+main(
+menu(myScanner)
+)
+
+menu(
+
+do {
+ print(
+ Bienvenido.
+ 1.Crear un rectángulo.
+ 2.Calcular el área y perimetro del recangulo.
+ 3.Ver número total de rectángulos creados.
+ 4.Salir
+ )
+ read option
+ switch (option){
+    case 1 -> crearRectangle()
+    case 2 -> imprimirAreaPerimetro()
+    case 3 -> imprimirTotalRectangulos()
+    case 4 -> print("Adios")
+    default -> print("Ingrese una opción válida")
+ }
+ } while(option != 4)
+ )

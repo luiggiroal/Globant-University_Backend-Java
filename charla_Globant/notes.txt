@@ -1,0 +1,10 @@
+* Do not display seniority in LinkedIn profile
+
+* Check HackerRank(specially this for Globant) and LeetCode for practicing for technical interviews.
+
+* Document what you are currently doing in LinkedIn.
+
+* Show off you know how to do the job.
+
+* projects of api. Testing of api's. Oriented Contract Testing
+
