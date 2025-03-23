@@ -67,6 +67,11 @@ public class LibroServicio {
         libroRepositorio.save(libro);
     }
 
+    @Transactional(readOnly = true)
+    public Libro findByIsbn(Long isbn) {
+        return libroRepositorio.findById(isbn).orElse(null);
+    }
+
     public void validar(Long isbn, String titulo, Integer ejemplares, UUID idAutor, UUID idEditorial) throws MiException {
         if (isbn == null)
             throw new MiException("El ISBN no puede ser nulo.");
@@ -78,9 +83,9 @@ public class LibroServicio {
             throw new MiException("La cantidad de ejemplares no puede ser nula");
 
         if (idAutor == null)
-            throw new MiException("El ID del autor no puede ser nulo");
+            throw new MiException("Debe seleccionar un Autor");
 
         if (idEditorial == null)
-            throw new MiException("El ID de la editorial no puede ser nulo");
+            throw new MiException("Debe seleccionar una Editorial");
     }
 }

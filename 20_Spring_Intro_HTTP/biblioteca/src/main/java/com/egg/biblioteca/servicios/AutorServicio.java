@@ -45,6 +45,11 @@ public class AutorServicio {
         autorRepositorio.save(autor);
     }
 
+    @Transactional(readOnly = true)
+    public Autor findById(UUID id) {
+        return autorRepositorio.findById(id).orElse(null);
+    }
+
     public void validar(String nombre) throws MiException{
         if (nombre == null || nombre.isEmpty())
             throw new MiException("El nombre no puede ser nulo o estar vacío");
