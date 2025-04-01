@@ -72,8 +72,7 @@ public class LibroServicio {
         return libroRepositorio.findById(isbn).orElse(null);
     }
 
-    public void validar(Long isbn, String titulo, Integer ejemplares, UUID idAutor, UUID idEditorial) throws MiException {
-        if (isbn == null)
+    public void validar(Long isbn, String titulo, Integer ejemplares, UUID idAutor, UUID idEditorial) throws MiException { if (isbn == null)
             throw new MiException("El ISBN no puede ser nulo.");
 
         if (titulo == null || titulo.trim().isEmpty())

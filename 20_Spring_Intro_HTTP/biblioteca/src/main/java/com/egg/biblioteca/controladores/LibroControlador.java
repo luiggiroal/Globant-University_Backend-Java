@@ -23,11 +23,11 @@ import java.util.logging.Logger;
 @RequestMapping("/libro")
 public class LibroControlador {
     @Autowired
-    AutorServicio autorServicio;
+    private AutorServicio autorServicio;
     @Autowired
-    EditorialServicio editorialServicio;
+    private EditorialServicio editorialServicio;
     @Autowired
-    LibroServicio libroServicio;
+    private LibroServicio libroServicio;
 
     @GetMapping("/registrar")
     public String registrar(ModelMap modelo) {
@@ -51,25 +51,15 @@ public class LibroControlador {
                            @RequestParam(required = false) Integer ejemplares,
                            @RequestParam(required = false) UUID idAutor,
                            @RequestParam(required = false) UUID idEditorial,
-                           // TODO: Change 'ModelMap' by 'RedirectAttributes'
-                           ModelMap modelo) {
+                           RedirectAttributes redirectAttributes) {
         try {
-//          Manual conversion from String to UUID. The conversion will take place only if
-//          ID is not null, and it is not empty.
-//            UUID autorUUID = (idAutor != null && !idAutor.isEmpty()) ? UUID.fromString(idAutor) : null;
-//            UUID editorialUUID = (idEditorial != null && !idEditorial.isEmpty()) ? UUID.fromString(idEditorial) : null;
-
             libroServicio.crearLibro(isbn, titulo, ejemplares, idAutor, idEditorial);
-            // TODO: Remove modelo.put. Add 'redirectAttributes' instead. Use 'redirect'
-            modelo.put("exito", "El libro fue cargado correctamente");
         } catch (MiException e) {
-            // TODO: Remove modelo.put. Add 'redirectAttributes' instead. Use 'redirect'
-            modelo.put("error", e.getMessage());
-            return "libro_form.html";
+            redirectAttributes.addFlashAttribute("error", e.getMessage());
+            return "redirect:/libro/registrar";
         }
-
-        // TODO: Use 'redirect' instead
-        return "index.html";
+        redirectAttributes.addFlashAttribute("exito", "El libro fue cargado correctamente");
+        return "redirect:/inicio";
     }
 
     @GetMapping("/lista")

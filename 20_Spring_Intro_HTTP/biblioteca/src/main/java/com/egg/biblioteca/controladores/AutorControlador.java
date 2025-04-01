@@ -32,12 +32,11 @@ public class AutorControlador {
             autorServicio.crearAutor(nombre);
             modelo.put("exito", "El autor fue cargado correctamente");
         } catch (MiException e) {
-//            Logger.getLogger(AutorControlador.class.getName()).log(Level.SEVERE, null, e);
             modelo.put("error", e.getMessage());
             return "autor_form.html";
         }
 
-        return "index.html";
+        return "inicio.html";
     }
 
     @GetMapping("/lista")
