@@ -40,28 +40,32 @@
 
 <nav th:replace="~{fragments/navbar :: navbar}"></nav>
 
-<div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito" >
-    <div class="card-body">
-        <h5 class="card-title">Exito</h5>
-        <p class="card-text" th:text="${exito}"></p>
-    </div>
-</div>
-<div th:if="${error}!=null" class="card text-white bg-danger mb-3 mensajeError" >
-    <div class="card-body">
-        <h5 class="card-title">Error</h5>
-        <p class="card-text" th:text="${error}"></p>
-    </div>
-</div>
+<!--<div th:if="${exito}!=null" class="card text-white bg-success mb-3 mt-3 mensajeExito" >-->
+<!--    <div class="card-body">-->
+<!--        <h5 class="card-title">Exito</h5>-->
+<!--        <p class="card-text" th:text="${exito}"></p>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div th:if="${error}!=null" class="card text-white bg-danger mb-3 mensajeError" >-->
+<!--    <div class="card-body">-->
+<!--        <h5 class="card-title">Error</h5>-->
+<!--        <p class="card-text" th:text="${error}"></p>-->
+<!--    </div>-->
+<!--</div>-->
 
 <header class="header">
     <section class="contenedorMain">
         <div class="tituloBiblioteca">
-            <a class="navbar-brand" href="#">BIBLIOTECA EGG</a>
+            <a class="navbar-brand" th:text="'Error ' + ${codigo}" href="#">BIBLIOTECA EGG</a>
+            <p class="tituloLibros" th:text="${mensaje}"></p>
         </div>
-        <div class="container contenedorLibros">
-            <p class="tituloLibros">Encontrá todos los Libros Aquí!</p>
 
-        </div>
+        <section class="text-center container">
+            <div class="row mt-3">
+                <div class="divVolver">
+                    <a class="btn btn-secondary my-2 botonVolver botones" th:href="@{/inicio}">Volver</a>
+                </div>
+            </div> </section> <div class="container contenedorLibros"> <p class="tituloLibros" th:if="${session.usuariosession != null and not #string.contains(#httpServletRequest.requestURI, 'error')}" th:text="'Hola de vuelta, ' +  ${session.usuariosession.nombre ?: 'Usuario'}"></p> </div>
         <div class="bg-circle-1 bg-circle"></div>
         <div class="bg-circle-2 bg-circle"></div>
         <div class="bg-circle-3 bg-circle"></div>

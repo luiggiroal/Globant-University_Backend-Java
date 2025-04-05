@@ -43,14 +43,24 @@ public class PortalControlador {
     }
 
 //    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
-    @GetMapping("/inicio")
-    public String inicio(@AuthenticationPrincipal UserDetails userDetails, HttpSession session) {
-        // Storing the authenticated user in the session
-        if (session.getAttribute("usuariosession") == null) {
-            Usuario usuario = usuarioServicio.findByEmail(userDetails.getUsername());
-            session.setAttribute("usuariosession", usuario);
-        }
+//    @GetMapping("/inicio")
+//    public String inicio(@AuthenticationPrincipal UserDetails userDetails, HttpSession session) {
+          // Storing the authenticated user in the session
+//        if (session.getAttribute("usuariosession") == null) {
+//            Usuario usuario = usuarioServicio.findByEmail(userDetails.getUsername());
+//            session.setAttribute("usuariosession", usuario);
+//        }
+//        return "inicio.html";
+//    }
 //            session.setAttribute("usuariosession", userDetails);
+    @GetMapping("/inicio")
+    public String inicio(HttpSession session) {
+        Usuario logueado = (Usuario) session.getAttribute("usuariosession");
+
+        // If user 'logueado' has a role as 'ADMIN' will be redirected to /admin/dashboard
+        if (logueado.getRol().toString().equals("ADMIN"))
+            return "redirect:/admin/dashboard";
+        // Otherwise, it will be redirected to 'inicio.html'
         return "inicio.html";
     }
 
